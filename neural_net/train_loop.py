@@ -51,6 +51,8 @@ class TrainLoop:
             return False
 
     def train_one_epoch(self, print_step, X_train, X_train_one_hot, y_train):
+        self.model.train()
+        torch.cuda.empty_cache()
         train_loss = 0
         number_of_steps_train = int(len(X_train)/self.bs)+1
         for i in range(number_of_steps_train):

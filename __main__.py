@@ -7,7 +7,7 @@ from neural_net.nn import MyCNN
 import torch
 
 config = {
-    'bs': 32,
+    'bs': 64,
     'maxlen': 5000,
     'n_channels': 100,
     'epochs': 27,
@@ -18,8 +18,8 @@ config = {
     'tolerance': 5e-4
 }
 if __name__ == '__main__':
-    train_data = pd.read_csv('../../train_values.csv')
-    train_labels = pd.read_csv('../../train_labels.csv')
+    train_data = pd.read_csv('../train_values.csv')
+    train_labels = pd.read_csv('../train_labels.csv')
     y = np.where(train_labels.drop('sequence_id', axis=1).values==1.0)[1]
     X_train, X_test, y_train, y_test = train_test_split(train_data, y, random_state=2020, test_size=0.2)
 
