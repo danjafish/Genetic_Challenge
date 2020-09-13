@@ -7,7 +7,7 @@ from neural_net.nn import MyCNN
 import torch
 
 config = {
-    'bs': 32,
+    'bs': 64,
     'maxlen': 5000,
     'n_channels': 100,
     'epochs': 27,
@@ -16,8 +16,8 @@ config = {
     'change_lr_treshhold': 2,
     'early_stopping_criteria': 5,
     'tolerance': 5e-4,
-    'path_to_data_train': '../../train_values.csv',
-    'path_to_labels_train': '../../train_labels.csv',
+    'path_to_data_train': '../train_values.csv',
+    'path_to_labels_train': '../train_labels.csv',
 }
 if __name__ == '__main__':
     train_data = pd.read_csv(config['path_to_data_train'])
@@ -29,7 +29,7 @@ if __name__ == '__main__':
     X_train, X_train_one_hot, y_train = preparator_train.transform(config['maxlen'], X_train, y_train)
     X_test, X_test_one_hot, y_test = preparator_train.transform(config['maxlen'], X_test, y_test)
 
-    model = MyCNN(120)
+    model = MyCNN(120).cuda()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
     train_looper = TrainLoop(config['bs'], config['epochs'], config['lr_reduce_parametr'],
