@@ -13,6 +13,8 @@ class MyCNN(torch.nn.Module):
         self.conv4 = torch.nn.Conv1d(in_channels=20, out_channels=n_channels, kernel_size=80)
         self.conv5 = torch.nn.Conv1d(in_channels=20, out_channels=n_channels, kernel_size=10)
         # self.conv6 = torch.nn.Conv1d(in_channels=20, out_channels=n_channels, kernel_size=40)
+        self.lstm1 = torch.nn.LSTM(input_size=20, hidden_size=128, batch_first=True, bidirectional=True)
+        self.lstm2 = torch.nn.LSTM(input_size=256, hidden_size=64, batch_first=True, bidirectional=True)
 
         self.bn1 = torch.nn.BatchNorm1d(n_channels)
         self.bn0 = torch.nn.BatchNorm1d(20)
@@ -28,11 +30,21 @@ class MyCNN(torch.nn.Module):
         self.do5 = torch.nn.Dropout(0.2)
         self.do = torch.nn.Dropout(0.1)
         self.dense_for_one_hot = torch.nn.Linear(39, 8)
-        self.dense = torch.nn.Linear(n_channels * 5 + 8, 1314)
+        self.one_hot_to_weights = torch.nn.Linear(39, 20)
+        self.dense_for_lstm_and_cnn = torch.nn.Linear(n_channels * 5 + 2432, 64)
+        self.dense = torch.nn.Linear(64 + 8, 1314)
 
     def forward(self, x, y):
-        x = self.emb(x).transpose(-1, -2)
+        w = torch.sigmoid(self.one_hot_to_weights(y))
+        x = self.emb(x)
+        x = w.unsqueeze(1) * x
+        x = x.transpose(-1, -2)
         x = self.bn0(x)
+
+        z = self.lstm1(x.transpose(-1, -2))
+        z = self.lstm2(z[0])
+        z = F.max_pool1d(z[0].transpose(-1, -2), kernel_size=(500), stride=250)
+        z = z.reshape(z.shape[0], -1)
 
         x1 = F.relu(self.conv1(x))
         x1 = self.bn1(x1)
@@ -66,6 +78,8 @@ class MyCNN(torch.nn.Module):
         x = torch.cat([x1, x2, x3, x5, x4], dim=2)
         # print('after cat ', x.shape)
         x = x.reshape((x.shape[0], -1))
+        x = torch.cat([x, z], 1)
+        x = self.dense_for_lstm_and_cnn(x)
 
         y = self.dense_for_one_hot(y)
         y = y.reshape((y.shape[0], -1))
