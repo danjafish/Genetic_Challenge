@@ -12,7 +12,7 @@ class MyCNN(torch.nn.Module):
         self.conv3 = torch.nn.Conv1d(in_channels=20, out_channels=n_channels, kernel_size=25)
         self.conv4 = torch.nn.Conv1d(in_channels=20, out_channels=n_channels, kernel_size=80)
         self.conv5 = torch.nn.Conv1d(in_channels=20, out_channels=n_channels, kernel_size=10)
-        # self.conv6 = torch.nn.Conv1d(in_channels=20, out_channels=n_channels, kernel_size=40)
+        self.conv6 = torch.nn.Conv1d(in_channels=20, out_channels=n_channels, kernel_size=40)
 
         self.bn1 = torch.nn.BatchNorm1d(n_channels)
         self.bn0 = torch.nn.BatchNorm1d(20)
@@ -59,11 +59,13 @@ class MyCNN(torch.nn.Module):
         x5 = self.bn5(x5)
         x5 = F.max_pool2d(x5, kernel_size=(1, x5.size()[-1]))
         x5 = self.do5(x5)
-        #         x6 = F.relu(self.conv6(x))
-        #         x6 = self.bn6(x6)
-        #         x6 = F.max_pool2d(x6, kernel_size=(1, x6.size()[-1]))
 
-        x = torch.cat([x1, x2, x3, x5, x4], dim=2)
+        x6 = F.relu(self.conv6(x))
+        x6 = self.bn6(x6)
+        x6 = F.max_pool2d(x6, kernel_size=(1, x6.size()[-1]))
+        x6 = self.do5(x6)
+
+        x = torch.cat([x1, x2, x3, x5, x4, x6], dim=2)
         # print('after cat ', x.shape)
         x = x.reshape((x.shape[0], -1))
 

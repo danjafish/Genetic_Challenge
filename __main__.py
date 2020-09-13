@@ -29,7 +29,7 @@ if __name__ == '__main__':
     X_train, X_train_one_hot, y_train = preparator_train.transform(config['maxlen'], X_train, y_train)
     X_test, X_test_one_hot, y_test = preparator_train.transform(config['maxlen'], X_test, y_test)
 
-    model = MyCNN(100)
+    model = MyCNN(120)
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
     train_looper = TrainLoop(config['bs'], config['epochs'], config['lr_reduce_parametr'],
