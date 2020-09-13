@@ -35,8 +35,8 @@ class TrainLoop:
             print("Loss improved from {} to {}".format(self.mse_min, mse))
             print('=====================')
             self.mse_min = mse
-            torch.save(model.state_dict(), 'model_dict.h5'.format(np.round(mse, 3), np.round(top10auc, 3)))
-            torch.save(optimizer.state_dict(), 'opt_dict.dict')
+            torch.save(model.state_dict(), 'model_dict_bigcnn.h5'.format(np.round(mse, 3), np.round(top10auc, 3)))
+            torch.save(optimizer.state_dict(), 'opt_dict_bigcnn.dict')
         else:
             print("Loss not improved ", mse)
             self.change_lr += 1
@@ -51,6 +51,8 @@ class TrainLoop:
             return False
 
     def train_one_epoch(self, print_step, X_train, X_train_one_hot, y_train):
+        self.model.train()
+        torch.cuda.empty_cache()
         train_loss = 0
         number_of_steps_train = int(len(X_train)/self.bs)+1
         for i in range(number_of_steps_train):
@@ -120,5 +122,5 @@ class TrainLoop:
 
         for e in range(epochs):
             train_loss = self.train_one_epoch(200, X_all, X_all_one_hot, y_all)
-            torch.save(self.model.state_dict(), 'trained_on_val.h5')
+            torch.save(self.model.state_dict(), 'trained_on_val_bigcnn.h5')
             print('Train on val ', e, train_loss)
