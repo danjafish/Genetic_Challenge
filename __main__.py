@@ -18,6 +18,7 @@ if __name__ == '__main__':
     X_test, X_test_one_hot, y_test = preparator_train.transform(config['maxlen'], X_test, y_test)
 
     model = MyCNN(100)
+    model.cuda()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
     train_looper = TrainLoop(config['bs'], config['epochs'], config['lr_reduce_parametr'],
@@ -27,13 +28,13 @@ if __name__ == '__main__':
                              X_test_one_hot)
     train_looper.train_loop()
 
-    model.load_state_dict(torch.load('model_dict.h5'))
-    model.cuda()
-    optimizer.load_state_dict(torch.load('opt_dict.dict'))
-    train_looper = TrainLoop(config['bs'], config['epochs'], config['lr_reduce_parametr'],
-                             config['change_lr_treshhold'],
-                             config['early_stopping_criteria'], model, optimizer, X_train, y_train, X_test, y_test,
-                             X_train_one_hot,
-                             X_test_one_hot)
+    #model.load_state_dict(torch.load('model_dict.h5'))
+    #model.cuda()
+    #optimizer.load_state_dict(torch.load('opt_dict.dict'))
+    # train_looper = TrainLoop(config['bs'], config['epochs'], config['lr_reduce_parametr'],
+    #                          config['change_lr_treshhold'],
+    #                          config['early_stopping_criteria'], model, optimizer, X_train, y_train, X_test, y_test,
+    #                          X_train_one_hot,
+    #                          X_test_one_hot)
 
-    train_looper.train_on_val(7)
+    train_looper.train_on_val(3)

@@ -6,6 +6,7 @@ from torch import LongTensor, FloatTensor
 
 class DataPreparation:
     def transform(self, max_len, data_csv, y=None):
+        data_csv['sequence_len'] = data_csv.sequence.apply(lambda x: len(x))
         X_one_hot = np.array(data_csv.drop(['sequence', 'sequence_id'], axis=1).values)
         encoded_sequence = data_csv.sequence.apply(lambda x: letter2index(x))
         padded_sequence = pad_sequences(encoded_sequence, maxlen=max_len)

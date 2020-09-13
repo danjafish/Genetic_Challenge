@@ -27,7 +27,7 @@ class MyCNN(torch.nn.Module):
         self.do4 = torch.nn.Dropout(0.2)
         self.do5 = torch.nn.Dropout(0.2)
         self.do = torch.nn.Dropout(0.1)
-        self.dense_for_one_hot = torch.nn.Linear(39, 8)
+        self.dense_for_one_hot = torch.nn.Linear(40, 8)
         self.dense = torch.nn.Linear(n_channels * 5 + 8, 1314)
 
     def forward(self, x, y):

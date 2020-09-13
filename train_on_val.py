@@ -21,7 +21,7 @@ if __name__ == '__main__':
     train_data = pd.read_csv('../train_values.csv')
     train_labels = pd.read_csv('../train_labels.csv')
     y = np.where(train_labels.drop('sequence_id', axis=1).values == 1.0)[1]
-    X_train, X_test, y_train, y_test = train_test_split(train_data, y, random_state=2020, test_size=0.2)
+    X_train, X_test, y_train, y_test = train_test_split(train_data, y, random_state=2020, test_size=0.1)
 
     preparator_train = DataPreparation()
     X_train, X_train_one_hot, y_train = preparator_train.transform(config['maxlen'], X_train, y_train)
