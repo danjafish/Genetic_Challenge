@@ -109,6 +109,8 @@ class TrainLoop:
                 break
 
     def train_on_val(self, epochs):
+        self.model.load_state_dict(torch.load('model_dict.h5'))
+        self.optimizer.load_state_dict(torch.load('opt_dict.dict'))
         for g in self.optimizer.param_groups:
             lr = g['lr']
             break

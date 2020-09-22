@@ -1,5 +1,7 @@
 import numpy as np
 import torch
+import os
+import random
 
 
 def top10acc(y_true, y_predict):
@@ -17,3 +19,11 @@ def letter2index(s):
     for l in s:
         result.append(d[l])
     return np.array(result)
+
+def seed_everything(seed=1234):
+    random.seed(seed)
+    os.environ['PYTHONHASHSEED'] = str(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.backends.cudnn.deterministic = True
