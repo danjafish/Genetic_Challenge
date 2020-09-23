@@ -5,12 +5,12 @@ import numpy as np
 import torch
 
 class TrainLoop:
-    def __init__(self, bs, epochs, lr_reduce_parametr, change_lr_treshhold,
+    def __init__(self, bs, epochs, lr_reduce_parameter, change_lr_treshhold,
                  early_stopping_criteria, model, optimizer, X_train,
                  y_train, X_test, y_test, X_train_one_hot, X_test_one_hot, tolerance=5e-4, lr=0.001):
         self.bs = bs
         self.epochs = epochs
-        self.lr_reduce_parametr = lr_reduce_parametr
+        self.lr_reduce_parameter = lr_reduce_parameter
         self.change_lr_treshhold = change_lr_treshhold
         self.early_stopping_criteria = early_stopping_criteria
         self.model = model
@@ -43,8 +43,8 @@ class TrainLoop:
             print('loss not getting better for {} epochs'.format(self.change_lr))
             if self.change_lr % self.change_lr_treshhold == 0:
                 for g in optimizer.param_groups:
-                    g['lr'] = g['lr'] * self.lr_reduce_parametr
-                print('lr reduced by {}'.format(self.lr_reduce_parametr))
+                    g['lr'] = g['lr'] * self.lr_reduce_parameter
+                print('lr reduced by {}'.format(self.lr_reduce_parameter))
             print('=====================')
             if self.change_lr == self.early_stopping_criteria:
                 return True

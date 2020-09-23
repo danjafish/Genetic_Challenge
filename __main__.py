@@ -7,8 +7,12 @@ from neural_net.nn import MyCNN, Cnn_seq
 from config import config
 from utils.support_func import seed_everything
 import torch
+import os
 
 if __name__ == '__main__':
+    os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+    os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+
     seed_everything(2020)
     train_data = pd.read_csv(config['path_to_data_train'])
     train_labels = pd.read_csv(config['path_to_labels_train'])
@@ -25,8 +29,8 @@ if __name__ == '__main__':
     model.cuda()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
-    train_looper = TrainLoop(config['bs'], config['epochs'], config['lr_reduce_parametr'],
-                             config['change_lr_treshhold'],
+    train_looper = TrainLoop(config['bs'], config['epochs'], config['lr_reduce_parameter'],
+                             config['change_lr_threshold'],
                              config['early_stopping_criteria'], model, optimizer, X_train, y_train, X_test, y_test,
                              X_train_one_hot,
                              X_test_one_hot)
