@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a8c37eac-935d-4751-9e2f-aeeb05e0394b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/__main__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_net/nn.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_net/nn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/MV.ipynb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,29 +69,37 @@
       <option name="project" value="LOCAL" />
       <updated>1600951453267</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add LSTM net">
+      <created>1600973889152</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1600973889152</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add notebooks" />
-    <option name="LAST_COMMIT_MESSAGE" value="add notebooks" />
+    <MESSAGE value="Add LSTM net" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add LSTM net" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="621" y="117" key="CommitChangelistDialog2" timestamp="1600951439517">
+    <state x="621" y="117" key="CommitChangelistDialog2" timestamp="1600973874480">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="621" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1600951439517" />
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1600951496062">
+    <state x="621" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1600973874480" />
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1600973920136">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1600951496062" />
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1600973920136" />
     <state x="667" y="346" key="com.intellij.ide.util.TipDialog" timestamp="1600357704275">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="346" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600357704275" />
-    <state x="664" y="322" key="git4idea.merge.GitPullDialog" timestamp="1600950980605">
+    <state x="664" y="322" key="git4idea.merge.GitPullDialog" timestamp="1600974696540">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="664" y="322" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600950980605" />
+    <state x="664" y="322" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600974696540" />
   </component>
 </project>
