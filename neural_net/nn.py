@@ -64,8 +64,6 @@ class MyCNN(torch.nn.Module):
         return x
 
 
-
-
 class Cnn_seq(torch.nn.Module):
 
     def __init__(self, n_channels):
@@ -156,3 +154,32 @@ class Cnn_seq(torch.nn.Module):
         # x = F.softmax(x, dim=-1)
 
         return x
+
+
+class MyLSTM(torch.nn.Module):
+    def __init__(self):
+        super().__init__()
+        ed = 20
+        self.emb = torch.nn.Embedding(num_embeddings=6, embedding_dim=ed)
+        self.lstm1 = torch.nn.LSTM(input_size=ed, hidden_size=128, batch_first=True, bidirectional=True)
+        self.lstm2 = torch.nn.LSTM(input_size=256, hidden_size=64, batch_first=True, bidirectional=True)
+        self.one_hot_to_weights = torch.nn.Linear(40, ed)
+        self.bn0 = torch.nn.BatchNorm1d(ed)
+        self.drop = torch.nn.Dropout(0.5)
+        self.dense = torch.nn.Linear(2432, 1314)
+
+    def forward(self, x, y):
+        w = torch.sigmoid(self.one_hot_to_weights(y))
+        x = self.emb(x)
+        x = w.unsqueeze(1) * x
+        x = x.transpose(-1, -2)
+        x = self.bn0(x)
+
+        z = self.lstm1(x.transpose(-1, -2))
+        z = self.lstm2(z[0])
+        z = F.max_pool1d(z[0].transpose(-1, -2), kernel_size=(500), stride=250)
+        z = z.reshape(z.shape[0], -1)
+        z = self.drop(z)
+        z = self.dense(z)
+
+        return z

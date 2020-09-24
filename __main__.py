@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from neural_net.data_prep import DataPreparation
 from neural_net.train_loop import TrainLoop
-from neural_net.nn import MyCNN, Cnn_seq
+from neural_net.nn import MyCNN, Cnn_seq, MyLSTM
 from config import config
 from utils.support_func import seed_everything
 import torch
@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
     #  model = Cnn_seq(100)
     kernel_sizes = [i for i in range(5, 26, 10)] + [i for i in range(40, 120, 30)]
-    model = MyCNN(n_channels=config.n_channels, kernel_sizes=kernel_sizes)
+    model = MyLSTM()#MyCNN(n_channels=config.n_channels, kernel_sizes=kernel_sizes)
     model.cuda()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 

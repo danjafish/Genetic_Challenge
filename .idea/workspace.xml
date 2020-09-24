@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a8c37eac-935d-4751-9e2f-aeeb05e0394b" name="Default Changelist" comment="" />
+    <list default="true" id="a8c37eac-935d-4751-9e2f-aeeb05e0394b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/__main__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neural_net/nn.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_net/nn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/MV.ipynb" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,30 +34,6 @@
   </component>
   <component name="ProjectId" id="1hUtbauCpFkqjWrvenR5bLmmWfn" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Genetic_Challenge" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Genetic_Challenge" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Genetic_Challenge" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Genetic_Challenge" type="462c0819:PsiDirectoryNode" />
-              <item name="neural_net" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -84,9 +65,29 @@
       <option name="presentableId" value="Default" />
       <updated>1599995956564</updated>
     </task>
+    <task id="LOCAL-00001" summary="add notebooks">
+      <created>1600951453267</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1600951453267</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add notebooks" />
+    <option name="LAST_COMMIT_MESSAGE" value="add notebooks" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="621" y="117" key="CommitChangelistDialog2" timestamp="1600951439517">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="621" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1600951439517" />
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1600951496062">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1600951496062" />
     <state x="667" y="346" key="com.intellij.ide.util.TipDialog" timestamp="1600357704275">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
